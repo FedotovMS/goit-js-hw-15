@@ -11,11 +11,12 @@ const refs = {
   boxes: document.querySelector("#boxes"),
 };
 
-refs.createBtn.addEventListener("click", createBoxes);
-refs.destroyBtn.addEventListener("click", destroyBoxes);
+refs.createBtn.addEventListener("click", onCreate);
+refs.destroyBtn.addEventListener("click", onDestroy);
 
-function createBoxes() {
-  const amount = Number(refs.input.value);
+function createBoxes(amount) {
+  refs.boxes.innerHTML = "";
+
   let boxSize = 30;
   const boxes = [];
 
@@ -31,6 +32,11 @@ function createBoxes() {
   refs.boxes.append(...boxes);
 }
 
-function destroyBoxes() {
+function onCreate() {
+  const amount = Number(refs.input.value);
+  createBoxes(amount);
+}
+
+function onDestroy() {
   return (refs.boxes.innerHTML = "");
 }
